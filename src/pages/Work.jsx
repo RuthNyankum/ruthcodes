@@ -12,6 +12,18 @@ const Work = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
 
+  // Dynamic image import function
+  const importImage = (imagePath) => {
+    try {
+      // Extract just the filename from the path
+      const filename = imagePath.split('/').pop();
+      return new URL(`../assets/images/${filename}`, import.meta.url).href;
+    } catch (error) {
+      console.error('Error loading image:', error);
+      return null;
+    }
+  };
+
   const filterCategories = ['All', 'Design', 'Development'];
 
   const filteredItems =
@@ -64,32 +76,117 @@ const Work = () => {
 
         {/* Portfolio Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {currentItems.map((item) => (
-            <div
-              key={item.id}
-              className="group bg-darkGray rounded-2xl overflow-hidden border border-slate-700 hover:border-primary transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-500/20 hover:-translate-y-2"
-            >
-              {/* Image */}
-              <div className="relative overflow-hidden bg-gradient-to-br from-slate-700 to-slate-800">
-                <div className="aspect-video bg-gradient-to-r from-cyan-500 to-blue-600 flex items-center justify-center">
-                  <div className="w-20 h-16 bg-white/10 rounded-lg flex items-center justify-center">
-                    <div className="w-8 h-8 bg-white/20 rounded"></div>
+          {currentItems.map((item) => {
+            // Get the dynamic image URL
+            const imageUrl = importImage(item.image);
+
+            return (
+              <div
+                key={item.id}
+                className="group bg-darkGray rounded-2xl overflow-hidden border border-slate-700 hover:border-primary transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-500/20 hover:-translate-y-2"
+              >
+                {/* Image */}
+                <div className="relative overflow-hidden bg-gradient-to-br from-slate-700 to-slate-800">
+                  {imageUrl ? (
+                    <div className="aspect-video">
+                      <img
+                        src={imageUrl}
+                        alt={item.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        onError={(e) => {
+                          // Fallback if image fails to load
+                          e.target.style.display = 'none';
+                          e.target.nextSibling.style.display = 'flex';
+                        }}
+                      />
+                      {/* Fallback placeholder */}
+                      <div
+                        className="aspect-video bg-gradient-to-r from-cyan-500 to-blue-600 flex items-center justify-center"
+                        style={{ display: 'none' }}
+                      >
+                        <div className="w-20 h-16 bg-white/10 rounded-lg flex items-center justify-center">
+                          <div className="w-8 h-8 bg-white/20 rounded"></div>
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    // Default placeholder when no image
+                    <div className="aspect-video bg-gradient-to-r from-cyan-500 to-blue-600 flex items-center justify-center">
+                      <div className="w-20 h-16 bg-white/10 rounded-lg flex items-center justify-center">
+                        <div className="w-8 h-8 bg-white/20 rounded"></div>
+                      </div>
+                    </div>
+                  )}
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-300"></div>
+
+                  {/* Overlay Links */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 bg-black/40">
+                    <div className="flex gap-3">
+                      {item.liveLink && (
+                        <a
+                          href={item.liveLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-cyan-500 hover:scale-110 transition-all duration-300"
+                          title="View Live Project"
+                        >
+                          <FiExternalLink size={20} />
+                        </a>
+                      )}
+                      {item.githubLink && (
+                        <a
+                          href={item.githubLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-gray-600 hover:scale-110 transition-all duration-300"
+                          title="View Source Code"
+                        >
+                          <FiGithub size={20} />
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </div>
-                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-300"></div>
 
-                {/* Overlay Links */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 bg-black/40">
-                  <div className="flex gap-3">
+                {/* Content */}
+                <div className="p-6">
+                  <div className="mb-3">
+                    <span className="text-primary text-sm font-medium bg-cyan-400/10 px-3 py-1 rounded-full font-inter">
+                      {item.category}
+                    </span>
+                  </div>
+
+                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-primary transition-colors font-inter">
+                    {item.title}
+                  </h3>
+
+                  <p className="text-slate-400 text-sm mb-4 line-clamp-2 font-jetbrains">
+                    {item.description}
+                  </p>
+
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {item.tags.map((tag, index) => (
+                      <span
+                        key={index}
+                        className="text-xs px-2 py-1 bg-slate-700 text-slate-300 rounded-md hover:bg-slate-600 transition-colors font-jetbrains"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Bottom Links */}
+                  <div className="flex gap-3 pt-3 border-t border-slate-700">
                     {item.liveLink && (
                       <a
                         href={item.liveLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-cyan-500 hover:scale-110 transition-all duration-300"
-                        title="View Live Project"
+                        className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 text-sm font-medium transition-colors"
                       >
-                        <FiExternalLink size={20} />
+                        <FiExternalLink size={14} />
+                        Live Demo
                       </a>
                     )}
                     {item.githubLink && (
@@ -97,72 +194,17 @@ const Work = () => {
                         href={item.githubLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-gray-600 hover:scale-110 transition-all duration-300"
-                        title="View Source Code"
+                        className="flex items-center gap-2 text-slate-400 hover:text-white text-sm font-medium transition-colors"
                       >
-                        <FiGithub size={20} />
+                        <FiGithub size={14} />
+                        Source
                       </a>
                     )}
                   </div>
                 </div>
               </div>
-
-              {/* Content */}
-              <div className="p-6">
-                <div className="mb-3">
-                  <span className="text-primary text-sm font-medium bg-cyan-400/10 px-3 py-1 rounded-full font-inter">
-                    {item.category}
-                  </span>
-                </div>
-
-                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-primary transition-colors font-inter">
-                  {item.title}
-                </h3>
-
-                <p className="text-slate-400 text-sm mb-4 line-clamp-2 font-jetbrains">
-                  {item.description}
-                </p>
-
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {item.tags.map((tag, index) => (
-                    <span
-                      key={index}
-                      className="text-xs px-2 py-1 bg-slate-700 text-slate-300 rounded-md hover:bg-slate-600 transition-colors font-jetbrains"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Bottom Links */}
-                <div className="flex gap-3 pt-3 border-t border-slate-700">
-                  {item.liveLink && (
-                    <a
-                      href={item.liveLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 text-sm font-medium transition-colors"
-                    >
-                      <FiExternalLink size={14} />
-                      Live Demo
-                    </a>
-                  )}
-                  {item.githubLink && (
-                    <a
-                      href={item.githubLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-slate-400 hover:text-white text-sm font-medium transition-colors"
-                    >
-                      <FiGithub size={14} />
-                      Source
-                    </a>
-                  )}
-                </div>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Pagination */}

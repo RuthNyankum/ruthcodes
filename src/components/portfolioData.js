@@ -1,122 +1,140 @@
 // src/data/portfolioData.js
+import portfolio from '../assets/images/portfolio.png';
+import dashboard from '/src/assets/images/dashboard.png';
+import calculator from '../assets/images/calculator.png';
+import quiz from '../assets/images/quizapp.png';
+import construction from '../assets/images/construction.png';
+import hustlers from '../assets/images/hustlers.png';
+import ai from '../assets/images/art-int.png';
+import carelink from '../assets/images/carelink.png';
+import rango from '../assets/images/rango.png';
+import music from '../assets/images/music.png';
 
 export const portfolioItems = [
   {
     id: 1,
     category: 'Web Development',
-    title: 'React Dashboard App',
+    title: 'Portfolio Website',
     description:
-      'Real-time analytics dashboard with interactive visualizations',
-    image: '/api/placeholder/300/200',
+      'Personal portfolio showcasing my development skills and projects',
+    image: portfolio,
     tags: ['React', 'Tailwind'],
     type: 'Development',
-    liveLink: 'https://your-dashboard-demo.netlify.app',
-    githubLink: 'https://github.com/yourusername/react-dashboard',
+    liveLink: 'https://ruthcodez.netlify.app',
+    githubLink: 'https://github.com/RuthNyankum/ruthcodes.git',
   },
   {
     id: 2,
     category: 'UI/UX Design',
-    title: 'E-Commerce Design System',
-    description: 'Complete design system for modern e-commerce platform',
-    image: '/api/placeholder/300/200',
+    title: 'Student Management System',
+    description:
+      "Dashboard design for parents to track their children's academic performance",
+    image: dashboard,
     tags: ['Figma'],
     type: 'Design',
-    liveLink: 'https://www.figma.com/file/your-design-system',
-    // No GitHub link for design projects
+    liveLink:
+      'https://www.figma.com/design/KJpi2IOMTb2jtoWgGDLdlb/student-management?t=XlqZbnayorbFo8Hi-1',
   },
   {
     id: 3,
     category: 'Web Development',
-    title: 'SaaS Platform',
-    description: 'Full-stack SaaS application with subscription management',
-    image: '/api/placeholder/300/200',
-    tags: ['Next.js', 'Node.js', 'PostgreSQL'],
+    title: 'Calculator App',
+    description: 'Responsive calculator with basic arithmetic operations',
+    image: calculator,
+    tags: ['HTML', 'CSS', 'JavaScript'],
     type: 'Development',
-    liveLink: 'https://your-saas-demo.vercel.app',
-    githubLink: 'https://github.com/yourusername/saas-platform',
+    liveLink: 'https://tocalculator.netlify.app/',
+    githubLink: 'https://github.com/RuthNyankum/calculator.git',
   },
   {
     id: 4,
-    category: 'Mobile Design',
-    title: 'Banking Mobile App',
+    category: 'UI/UX Design',
+    title: 'Interactive Quiz App',
     description:
-      'Secure mobile banking interface with biometric authentication',
-    image: '/api/placeholder/300/200',
-    tags: ['Sketch', 'Principle'],
+      'Mobile quiz interface with multiple choice questions and results',
+    image: quiz,
+    tags: ['Figma', 'Prototype'],
     type: 'Design',
-    liveLink: 'https://www.behance.net/gallery/your-banking-app',
-    // No GitHub link for design projects
+    liveLink:
+      'https://www.figma.com/design/x30rwFmGLyZfNfLz0z0wwk/quiz-app?node-id=0-1&t=XlqZbnayorbFo8Hi-1',
   },
   {
     id: 5,
     category: 'Web Development',
-    title: 'Portfolio Website',
+    title: 'Construction Company Website',
     description:
-      'Responsive portfolio with smooth animations and modern design',
-    image: '/api/placeholder/300/200',
-    tags: ['Vue.js', 'GSAP', 'CSS3'],
+      'Professional construction company landing page with responsive design',
+    image: construction,
+    tags: ['HTML', 'CSS', 'Media Queries'],
     type: 'Development',
-    liveLink: 'https://your-portfolio.netlify.app',
-    githubLink: 'https://github.com/yourusername/portfolio-v2',
+    liveLink: 'https://webuilderclone.netlify.app/',
+    githubLink: 'https://github.com/RuthNyankum/Construction.git',
   },
   {
     id: 6,
     category: 'UI/UX Design',
-    title: 'Healthcare Dashboard',
+    title: 'Student Entrepreneurs Platform',
     description:
-      'Medical data visualization dashboard for healthcare professionals',
-    image: '/api/placeholder/300/200',
-    tags: ['Adobe XD', 'Protopie'],
+      'Booking platform connecting skilled students with potential clients',
+    image: hustlers,
+    tags: ['Figma'],
     type: 'Design',
-    liveLink: 'https://xd.adobe.com/view/your-healthcare-dashboard',
-    // No GitHub link for design projects
+    liveLink:
+      'https://www.figma.com/design/cpNaVmLT3MWXESglyNUfjc/student-hustler?t=XlqZbnayorbFo8Hi-1',
   },
   {
     id: 7,
     category: 'Web Development',
-    title: 'Learning Management System',
+    title: 'AI Technology Landing Page',
     description:
-      'Educational platform with video streaming and progress tracking',
-    image: '/api/placeholder/300/200',
-    tags: ['React', 'Express', 'MongoDB'],
+      'Modern landing page showcasing artificial intelligence solutions',
+    image: ai,
+    tags: ['Bootstrap'],
     type: 'Development',
-    liveLink: 'https://your-lms-demo.herokuapp.com',
-    githubLink: 'https://github.com/yourusername/lms-platform',
+    liveLink: 'https://art-interlligence.netlify.app/',
+    githubLink: 'https://github.com/RuthNyankum/Artificial-Intelligence.git',
   },
   {
     id: 8,
-    category: 'Mobile Development',
-    title: 'Fitness Tracking App',
+    category: 'Web Development',
+    title: 'CareLink Hospital Management',
     description:
-      'Cross-platform fitness app with workout plans and nutrition tracking',
-    image: '/api/placeholder/300/200',
-    tags: ['React Native', 'Firebase'],
+      'Healthcare platform for patient appointment booking and management',
+    image: carelink,
+    tags: ['React'],
     type: 'Development',
-    liveLink: 'https://expo.dev/@yourusername/fitness-tracker',
-    githubLink: 'https://github.com/yourusername/fitness-tracker',
+    liveLink: 'https://carelink.netlify.app/',
+    githubLink: 'https://github.com/RuthNyankum/CareLink-Frontend.git',
   },
   {
     id: 9,
-    category: 'Brand Design',
-    title: 'Startup Brand Identity',
-    description:
-      'Complete brand identity package including logo, guidelines, and assets',
-    image: '/api/placeholder/300/200',
-    tags: ['Illustrator', 'InDesign'],
+    category: 'UI/UX Design',
+    title: 'RanGo Web Development Agency',
+    description: 'Landing page design for a web development agency showcase',
+    image: rango,
+    tags: ['Figma'],
     type: 'Design',
-    liveLink: 'https://www.behance.net/gallery/your-brand-identity',
-    // No GitHub link for design projects
+    liveLink:
+      'https://www.figma.com/design/j5NG74JBDODbZhbhMBmDrc/Rango?t=XlqZbnayorbFo8Hi-1',
   },
   {
     id: 10,
-    category: 'Web Development',
-    title: 'E-learning Platform',
+    category: 'UI/UX Design',
+    title: 'Music Player Interface',
     description:
-      'Interactive online learning platform with real-time collaboration',
-    image: '/api/placeholder/300/200',
-    tags: ['Angular', 'Socket.io', 'Redis'],
-    type: 'Development',
-    liveLink: 'https://your-elearning.netlify.app',
-    githubLink: 'https://github.com/yourusername/elearning-platform',
+      'Interactive music player app design with smooth user experience',
+    image: music,
+    tags: ['Figma'],
+    type: 'Design',
+    liveLink:
+      'https://www.figma.com/design/2fsF809wO0NryxGcCBeh1A/Music?node-id=0-1&t=XlqZbnayorbFo8Hi-1',
   },
 ];
+
+// Add this temporarily to see what's being imported
+console.log('Images:', {
+  portfolio,
+  dashboard,
+  calculator,
+  // ... etc
+});
