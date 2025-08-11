@@ -130,11 +130,3 @@ export const portfolioItems = [
       'https://www.figma.com/design/2fsF809wO0NryxGcCBeh1A/Music?node-id=0-1&t=XlqZbnayorbFo8Hi-1',
   },
 ];
-
-// Add this temporarily to see what's being imported
-console.log('Images:', {
-  portfolio,
-  dashboard,
-  calculator,
-  // ... etc
-});

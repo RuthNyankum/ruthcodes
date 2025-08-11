@@ -96,7 +96,7 @@ const Contact = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h1 className="text-5xl lg:text-6xl font-bold text-primary mb-4 font-inter">
-            Contact
+            CONTACT
           </h1>
         </div>
 

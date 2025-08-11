@@ -1,4 +1,3 @@
-// components/SkillCard.jsx
 import React from 'react';
 
 const SkillCard = ({ icon, title, desc, animation, delay }) => (

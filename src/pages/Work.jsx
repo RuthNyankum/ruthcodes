@@ -52,17 +52,17 @@ const Work = () => {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-5xl font-bold text-primary  mb-8 font-inter">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-primary mb-8 font-inter">
             WORK
           </h1>
 
-          {/* Filter Tabs */}
-          <div className="inline-flex bg-darkGray rounded-full p-1 border border-slate-700">
+          {/* Filter Tabs - Mobile Responsive */}
+          <div className="inline-flex bg-darkGray rounded-full p-1 border border-slate-700 w-full max-w-sm sm:max-w-none sm:w-auto">
             {filterCategories.map((filter) => (
               <button
                 key={filter}
                 onClick={() => handleFilterChange(filter)}
-                className={`px-8 py-3 rounded-full font-medium font-inter transition-all duration-300 ${
+                className={`flex-1 sm:flex-none px-4 sm:px-6 lg:px-8 py-2 sm:py-3 rounded-full font-medium font-inter text-sm sm:text-base transition-all duration-300 ${
                   activeFilter === filter
                     ? 'bg-primary text-white shadow-lg'
                     : 'text-slate-400 hover:text-white hover:bg-slate-700'
@@ -225,7 +225,7 @@ const Work = () => {
                   <button
                     key={page}
                     onClick={() => handlePageChange(page)}
-                    className={`w-10 h-10 rounded-lg font-medium transition-all ${
+                    className={`w-8 h-8 sm:w-10 sm:h-10 rounded-lg font-medium text-sm sm:text-base transition-all ${
                       currentPage === page
                         ? 'bg-cyan-500 text-white shadow-lg'
                         : 'bg-slate-800 border border-slate-700 text-slate-400 hover:text-white hover:border-cyan-400'
@@ -249,7 +249,7 @@ const Work = () => {
 
         {/* Results Info */}
         <div className="text-center mt-8">
-          <p className="text-slate-400 text-sm">
+          <p className="text-slate-400 text-xs sm:text-sm">
             Showing {startIndex + 1}-
             {Math.min(startIndex + itemsPerPage, filteredItems.length)} of{' '}
             {filteredItems.length} projects
