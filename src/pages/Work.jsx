@@ -12,18 +12,6 @@ const Work = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
 
-  // Dynamic image import function
-  const importImage = (imagePath) => {
-    try {
-      // Extract just the filename from the path
-      const filename = imagePath.split('/').pop();
-      return new URL(`../assets/images/${filename}`, import.meta.url).href;
-    } catch (error) {
-      console.error('Error loading image:', error);
-      return null;
-    }
-  };
-
   const filterCategories = ['All', 'Design', 'Development'];
 
   const filteredItems =
@@ -77,9 +65,6 @@ const Work = () => {
         {/* Portfolio Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {currentItems.map((item) => {
-            // Get the dynamic image URL
-            const imageUrl = importImage(item.image);
-
             return (
               <div
                 key={item.id}
@@ -87,10 +72,10 @@ const Work = () => {
               >
                 {/* Image */}
                 <div className="relative overflow-hidden bg-gradient-to-br from-slate-700 to-slate-800">
-                  {imageUrl ? (
+                  {item.image ? (
                     <div className="aspect-video">
                       <img
-                        src={imageUrl}
+                        src={item.image}
                         alt={item.title}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         onError={(e) => {

@@ -1,6 +1,5 @@
-// src/data/portfolioData.js
 import portfolio from '../assets/images/portfolio.png';
-import dashboard from '/src/assets/images/dashboard.png';
+import dashboard from '../assets/images/dashboard.png';
 import calculator from '../assets/images/calculator.png';
 import quiz from '../assets/images/quizapp.png';
 import construction from '../assets/images/construction.png';
@@ -17,7 +16,7 @@ export const portfolioItems = [
     title: 'Portfolio Website',
     description:
       'Personal portfolio showcasing my development skills and projects',
-    image: portfolio,
+    image: portfolio, // Direct reference to imported image
     tags: ['React', 'Tailwind'],
     type: 'Development',
     liveLink: 'https://ruthcodez.netlify.app',
