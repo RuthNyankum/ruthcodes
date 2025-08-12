@@ -7,12 +7,14 @@ import Skills from './Skills';
 import Contact from './Contact';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import Loader from '../components/Loader';
 
 import { FiBriefcase, FiCode, FiHome, FiMail, FiUser } from 'react-icons/fi';
 
 function Landing() {
   const [activeSection, setActiveSection] = useState('home');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const scrollToSection = (sectionId) => {
     setActiveSection(sectionId);
@@ -37,8 +39,20 @@ function Landing() {
     { id: 'contact', icon: FiMail, label: 'Contact' },
   ];
 
+  // Loading effect
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   // Scroll spy effect
   useEffect(() => {
+    // Only set up scroll spy after loading is complete
+    if (isLoading) return;
+
     const observerOptions = {
       root: null,
       rootMargin: '-50% 0px -50% 0px', // Trigger when section is 50% visible
@@ -75,7 +89,12 @@ function Landing() {
         }
       });
     };
-  }, []);
+  }, [isLoading]);
+
+  // Show loader while loading
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <div className="min-h-screen">
