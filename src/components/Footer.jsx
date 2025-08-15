@@ -17,7 +17,7 @@ function Footer() {
           {/* Left Side - Branding */}
           <div className="text-center md:text-left">
             <h1 className="text-2xl md:text-3xl font-bold font-inter text-primary mb-2 ">
-              Serendipity
+              Snow
             </h1>
             <p className="text-slate-300 flex items-center justify-center md:justify-start gap-1 ">
               Designed & Built with
@@ -75,7 +75,7 @@ function Footer() {
         {/* Copyright */}
         <div className="text-center font-jetbrains">
           <p className="text-slate-400 text-sm">
-            © 2025 Serendipity. All rights reserved.
+            © {new Date().getFullYear()} Snow. All rights reserved.
           </p>
         </div>
       </div>
