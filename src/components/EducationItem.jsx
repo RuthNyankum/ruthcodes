@@ -1,5 +1,4 @@
-// components/EducationItem.jsx
-import React from 'react';
+import React from "react";
 
 const EducationItem = ({ icon, title, desc }) => (
   <div className="flex items-start gap-3 sm:gap-4">

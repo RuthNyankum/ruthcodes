@@ -1,12 +1,11 @@
-import React from 'react';
+import React from "react";
 import {
   BsGithub,
   BsHeart,
   BsInstagram,
   BsLinkedin,
   BsTwitterX,
-} from 'react-icons/bs';
-// import { Heart } from 'lucide-react';
+} from "react-icons/bs";
 
 function Footer() {
   return (
